@@ -5130,9 +5130,13 @@ function copyTempDouble(ptr) {
           return 0;
         },__syscall85:function (which, varargs) { // readlink
           SYSCALLS.varargs = varargs;
-          console.log('TODO: readlink');
-          abort('unsupported syscall readlink');
-          return 0;
+          let pathp = SYSCALLS.get(), bufp = SYSCALLS.get(), size = SYSCALLS.get(), err = 0;
+          let shm_pathp = BROWSIX.browsix.putShmString(BROWSIX.browsix.SHM_OFF, pathp);
+          let shm_bufp = BROWSIX.browsix.getShmAt(bufp, size);
+          BROWSIX.browsix.copyFromUser(shm_bufp, bufp);
+          err = BROWSIX.browsix.syscall.sync(185, shm_pathp, shm_bufp);
+          BROWSIX.browsix.copyToUser(bufp, shm_bufp, shm_bufp.length);
+          return err;
         },__syscall91:function (which, varargs) { // munmap
           SYSCALLS.varargs = varargs;
           console.log('TODO: munmap');
@@ -5158,8 +5162,8 @@ function copyTempDouble(ptr) {
           let SYS_ACCEPT_FLAG = 5, SYS_ACCEPT = 364;
           let SYS_GETSOCKNAME_FLAG = 6, SYS_GETSOCKNAME = 1001;
           let SYS_GETPEERNAME_FLAG = 7, SYS_GETPEERNAME = 52;
-  		let SYS_SETSOCKOPT_FLAG = 14, SYS_SOCKOPT = 1000;
-  		let SYS_RECVFROM_FLAG = 12, SYS_RECVFROM = 1002;	
+          let SYS_SETSOCKOPT_FLAG = 14, SYS_SOCKOPT = 1000;
+          let SYS_RECVFROM_FLAG = 12, SYS_RECVFROM = 1002;	
           let SYS_SENDMSG_FLAG = 16;
           let SYS_ACCEPT4_FLAG = 364;
   

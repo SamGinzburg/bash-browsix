@@ -6,11 +6,11 @@ target triple = "asmjs-unknown-emscripten"
 @.str = private unnamed_addr constant [4 x i8] c"4.4\00", align 1
 @dist_version = constant i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), align 4
 @patch_level = constant i32 19, align 4
-@build_version = constant i32 17, align 4
+@build_version = constant i32 1, align 4
 @.str.1 = private unnamed_addr constant [8 x i8] c"release\00", align 1
 @release_status = constant i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.1, i32 0, i32 0), align 4
-@.str.2 = private unnamed_addr constant [40 x i8] c"@(#)Bash version 4.4.19(17) release GNU\00", align 1
-@sccs_version = constant i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str.2, i32 0, i32 0), align 4
+@.str.2 = private unnamed_addr constant [39 x i8] c"@(#)Bash version 4.4.19(1) release GNU\00", align 1
+@sccs_version = constant i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str.2, i32 0, i32 0), align 4
 @.str.3 = private unnamed_addr constant [50 x i8] c"Copyright (C) 2016 Free Software Foundation, Inc.\00", align 1
 @bash_copyright = constant i8* getelementptr inbounds ([50 x i8], [50 x i8]* @.str.3, i32 0, i32 0), align 4
 @.str.4 = private unnamed_addr constant [79 x i8] c"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\0A\00", align 1
@@ -37,11 +37,11 @@ if.then:                                          ; preds = %entry
   br i1 true, label %if.then2, label %if.else
 
 if.then2:                                         ; preds = %if.then
-  %call = call i32 (i8*, i8*, ...) @sprintf(i8* getelementptr inbounds ([32 x i8], [32 x i8]* @shell_version_string.tt, i32 0, i32 0), i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), i32 19, i32 17, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.1, i32 0, i32 0))
+  %call = call i32 (i8*, i8*, ...) @sprintf(i8* getelementptr inbounds ([32 x i8], [32 x i8]* @shell_version_string.tt, i32 0, i32 0), i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), i32 19, i32 1, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.1, i32 0, i32 0))
   br label %if.end
 
 if.else:                                          ; preds = %if.then
-  %call3 = call i32 (i8*, i8*, ...) @sprintf(i8* getelementptr inbounds ([32 x i8], [32 x i8]* @shell_version_string.tt, i32 0, i32 0), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), i32 19, i32 17)
+  %call3 = call i32 (i8*, i8*, ...) @sprintf(i8* getelementptr inbounds ([32 x i8], [32 x i8]* @shell_version_string.tt, i32 0, i32 0), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), i32 19, i32 1)
   br label %if.end
 
 if.end:                                           ; preds = %if.else, %if.then2
