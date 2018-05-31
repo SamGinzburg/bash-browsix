@@ -20,7 +20,6 @@
 
 %{
 #include "config.h"
-
 #include "bashtypes.h"
 #include "bashansi.h"
 
@@ -5736,11 +5735,6 @@ decode_prompt_string (string)
 	      *t++ = current_user.euid == 0 ? '#' : '$';
 	      *t = '\0';
 	      goto add_string;
-
-	    case 'j':
-	      temp = itos (count_all_jobs ());
-	      goto add_string;
-
 	    case 'l':
 #if defined (HAVE_TTYNAME)
 	      temp = (char *)ttyname (fileno (stdin));

@@ -20,6 +20,8 @@
 
 #include <config.h>
 
+#undef HAVE_GETCWD
+#define HAVE_GETCWD 1
 #if !defined (HAVE_GETCWD)
 
 #if !defined (__GNUC__) && !defined (HAVE_ALLOCA_H) && defined (_AIX)

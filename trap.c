@@ -715,10 +715,10 @@ set_signal (sig, string)
      environment in which it is safe to do so. */
   if ((sigmodes[sig] & SIG_NO_TRAP) == 0)
     {
-      BLOCK_SIGNAL (sig, set, oset);
+      //BLOCK_SIGNAL (sig, set, oset);
       change_signal (sig, savestring (string));
       set_signal_handler (sig, trap_handler);
-      UNBLOCK_SIGNAL (oset);
+      //UNBLOCK_SIGNAL (oset);
     }
   else
     change_signal (sig, savestring (string));

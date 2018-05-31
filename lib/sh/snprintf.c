@@ -1697,6 +1697,8 @@ dfallback (data, fs, fe, d)
 }
 #endif /* FLOATING_POINT */
 
+#undef HAVE_SNPRINTF
+#define HAVE_SNPRINTF 1
 #if !HAVE_SNPRINTF
 
 int

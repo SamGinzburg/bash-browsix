@@ -21,7 +21,7 @@
 */
 
 #include "config.h"
-
+#include "getopt.h"
 #include <stdio.h>
 #include "bashansi.h"
 #include "chartypes.h"

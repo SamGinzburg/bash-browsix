@@ -483,12 +483,7 @@ static int
 local_dlclose (handle)
      void *handle;
 {
-#if !defined (__MACHTEN__)
-  return (dlclose (handle));
-#else /* __MACHTEN__ */
-  dlclose (handle);
-  return ((dlerror () != NULL) ? -1 : 0);    
-#endif /* __MACHTEN__ */
+	return -1;
 }
 
 static int
@@ -526,16 +521,12 @@ dyn_unload_builtin (name)
   strcpy (funcname, name);
   strcpy (funcname + size, UNLOAD_SUFFIX);
 
-  unloadfunc = (sh_unload_func_t *)dlsym (handle, funcname);
-  if (unloadfunc)
-    (*unloadfunc) (name);	/* void function */
   free (funcname);
 
   /* Don't remove the shared object unless the reference count of builtins
      using it drops to zero. */
   if (ref == 1 && local_dlclose (handle) != 0)
     {
-      builtin_error (_("%s: cannot delete: %s"), name, dlerror ());
       return (EXECUTION_FAILURE);
     }
 

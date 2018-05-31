@@ -1980,7 +1980,7 @@ coproc_dispose (cp)
   if (cp == 0)
     return;
 
-  BLOCK_SIGNAL (SIGCHLD, set, oset);
+  //BLOCK_SIGNAL (SIGCHLD, set, oset);
   cp->c_lock = 3;
   coproc_unsetvars (cp);
   FREE (cp->c_name);
@@ -1991,7 +1991,7 @@ coproc_dispose (cp)
   coproc_init (cp);
   cp->c_lock = 0;
 #endif
-  UNBLOCK_SIGNAL (oset);
+  //UNBLOCK_SIGNAL (oset);
 }
 
 /* Placeholder for now.  Will require changes for multiple coprocs */
@@ -2287,7 +2287,7 @@ execute_coproc (command, pipe_in, pipe_out, fds_to_close)
   sh_openpipe ((int *)&rpipe);	/* 0 = parent read, 1 = child write */
   sh_openpipe ((int *)&wpipe); /* 0 = child read, 1 = parent write */
 
-  BLOCK_SIGNAL (SIGCHLD, set, oset);
+  //BLOCK_SIGNAL (SIGCHLD, set, oset);
 
   coproc_pid = make_child (savestring (tcmd), 1);
 
@@ -2296,7 +2296,7 @@ execute_coproc (command, pipe_in, pipe_out, fds_to_close)
       close (rpipe[0]);
       close (wpipe[1]);
 
-      UNBLOCK_SIGNAL (oset);
+      //UNBLOCK_SIGNAL (oset);
       estat = execute_in_subshell (command, 1, wpipe[0], rpipe[1], fds_to_close);
 
       fflush (stdout);
@@ -2318,7 +2318,7 @@ execute_coproc (command, pipe_in, pipe_out, fds_to_close)
 
   coproc_setvars (cp);
 
-  UNBLOCK_SIGNAL (oset);
+  //UNBLOCK_SIGNAL (oset);
 
 #if 0
   itrace ("execute_coproc: [%d] %s", coproc_pid, the_printed_command);

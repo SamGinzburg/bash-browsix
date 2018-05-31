@@ -20,6 +20,7 @@
 
 #include "config.h"
 
+#define HAVE_SYS_SIGLIST
 #if !defined (HAVE_SYS_SIGLIST) && !defined (HAVE_UNDER_SYS_SIGLIST) && !defined (HAVE_STRSIGNAL)
 
 #include <stdio.h>

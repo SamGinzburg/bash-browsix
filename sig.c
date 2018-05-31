@@ -684,39 +684,15 @@ sigterm_sighandler (sig)
 #if !defined (HAVE_POSIX_SIGNALS)
 
 /* Perform OPERATION on NEWSET, perhaps leaving information in OLDSET. */
-sigprocmask (operation, newset, oldset)
-     int operation, *newset, *oldset;
+int
+sigprocmask (int operation, const sigset_t* newset, sigset_t* oldset)
 {
-  int old, new;
-
-  if (newset)
-    new = *newset;
-  else
-    new = 0;
-
-  switch (operation)
-    {
-    case SIG_BLOCK:
-      old = sigblock (new);
-      break;
-
-    case SIG_SETMASK:
-      old = sigsetmask (new);
-      break;
-
-    default:
-      internal_error (_("sigprocmask: %d: invalid operation"), operation);
-    }
-
-  if (oldset)
-    *oldset = old;
+	return 0;
 }
 
 #else
 
-#if !defined (SA_INTERRUPT)
 #  define SA_INTERRUPT 0
-#endif
 
 #if !defined (SA_RESTART)
 #  define SA_RESTART 0
